@@ -137,28 +137,26 @@ EAPI E_Module_Api e_modapi = {
 EAPI void *
 e_modapi_init (E_Module * m)
 {
+   Ecore_Exe *exe;
    comp_module = m;
    //~ e_gadcon_provider_register(&_gadcon_class);
       
    char cmd[200];
    snprintf(cmd, sizeof(cmd), "compton --config %s/compton.conf", e_module_dir_get(comp_module));
-   ecore_init();
-   ecore_exe_run(cmd, NULL);
-   ecore_shutdown(); 
+   exe = e_util_exe_safe_run(cmd, NULL);
    return comp_module;
 }
 
 EAPI int
 e_modapi_shutdown (E_Module * m)
 {
+  Ecore_Exe *exe;
   comp_module = NULL;
   //~ e_gadcon_provider_unregister(&_gadcon_class);
   
   char cmd[200];
   snprintf(cmd, sizeof(cmd), "%s", "killall compton");
-  ecore_init();
-  ecore_exe_run(cmd, NULL);
-  ecore_shutdown(); 
+  exe = e_util_exe_safe_run(cmd, NULL);
   return 1;
 }
 
