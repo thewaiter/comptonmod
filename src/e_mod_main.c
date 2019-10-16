@@ -142,7 +142,7 @@ e_modapi_init (E_Module * m)
    //~ e_gadcon_provider_register(&_gadcon_class);
       
    char cmd[200];
-   snprintf(cmd, sizeof(cmd), "compton --config %s/compton.conf", e_module_dir_get(comp_module));
+   snprintf(cmd, sizeof(cmd), "compton --config %s/compton.conf -b &", e_module_dir_get(comp_module));
    exe = e_util_exe_safe_run(cmd, NULL);
    return comp_module;
 }
