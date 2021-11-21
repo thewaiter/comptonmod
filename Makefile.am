@@ -6,7 +6,7 @@ SUBDIRS = src \
 data
 
 EDJE_FLAGS = -v \
-	     -id $(top_srcdir)/images
+	     -id $(top_srcdir)/data/images
 
 filesdir = $(datadir)
 files_DATA = module.desktop e-module-comptonmod.edj
@@ -14,7 +14,7 @@ files_DATA = module.desktop e-module-comptonmod.edj
 EXTRA_DIST = module.desktop.in \
 	     e_modules-comptonmod.spec.in \
 	     e-module-comptonmod.edc \
-	     images/module_icon.png
+	     data/images/module_icon.png
 
 %.edj:  %.edc
 	$(EDJE_CC) $(EDJE_FLAGS) $< $@
