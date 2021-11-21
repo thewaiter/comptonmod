@@ -52,6 +52,9 @@ AC_ARG_ENABLE(homedir-install,
 AC_OUTPUT([
 Makefile
 src/Makefile
+data/Makefile
+data/etc/Makefile
+data/etc/compton.conf
 e_modules-comptonmod.spec
 module.desktop
 ], [
