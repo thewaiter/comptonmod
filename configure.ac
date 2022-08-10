@@ -3,7 +3,7 @@ dnl Process this file with autoconf to produce a configure script.
 # get rid of that stupid cache mechanism
 rm -f config.cache
 
-AC_INIT(comptonmod, 0.0.1, enlightenment-devel@lists.sourceforge.net)
+AC_INIT(comptonmod, 0.0.1, moksha@bodhilinux.com)
 AC_PREREQ(2.52)
 AC_CONFIG_SRCDIR(configure.ac)
 AC_CANONICAL_BUILD
@@ -52,6 +52,9 @@ AC_ARG_ENABLE(homedir-install,
 AC_OUTPUT([
 Makefile
 src/Makefile
+data/Makefile
+data/etc/Makefile
+data/etc/compton.conf
 e_modules-comptonmod.spec
 module.desktop
 ], [

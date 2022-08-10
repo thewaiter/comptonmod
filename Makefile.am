@@ -2,18 +2,19 @@ MAINTAINERCLEANFILES = Makefile.in aclocal.m4 config.guess config.h.in \
 		       config.sub configure depcomp install-sh ltmain.sh \
 		       missing module.desktop config.rpath mkinstalldirs
 
-SUBDIRS = src
+SUBDIRS = src \
+data
 
 EDJE_FLAGS = -v \
-	     -id $(top_srcdir)/images
+	     -id $(top_srcdir)/data/images
 
 filesdir = $(datadir)
-files_DATA = module.desktop e-module-comptonmod.edj compton.conf
+files_DATA = module.desktop e-module-comptonmod.edj
 
 EXTRA_DIST = module.desktop.in \
 	     e_modules-comptonmod.spec.in \
 	     e-module-comptonmod.edc \
-	     images/module_icon.png
+	     data/images/module_icon.png
 
 %.edj:  %.edc
 	$(EDJE_CC) $(EDJE_FLAGS) $< $@

@@ -141,8 +141,17 @@ e_modapi_init (E_Module * m)
    comp_module = m;
    //~ e_gadcon_provider_register(&_gadcon_class);
       
-   char cmd[200];
-   snprintf(cmd, sizeof(cmd), "picom --config %s/compton.conf -b &", e_module_dir_get(comp_module));
+   char cmd[PATH_MAX+20];
+   char buf[PATH_MAX];
+   snprintf(buf, sizeof(buf), "%s/compton.conf",
+                 efreet_config_home_get());
+   if (ecore_file_can_read(buf))
+      snprintf(cmd, sizeof(cmd), "picom --config %s -b &", buf);
+   else
+      if (ecore_file_can_read("/etc/compton.conf"))
+         snprintf(cmd, sizeof(cmd), "picom --config %s -b &", "/etc/compton.conf");
+      else
+         snprintf(cmd, sizeof(cmd), "picom --config %s -b &", "picom --config /dev/null");
    exe = e_util_exe_safe_run(cmd, NULL);
    return comp_module;
 }
