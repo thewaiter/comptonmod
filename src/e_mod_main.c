@@ -58,9 +58,6 @@ _gc_init(E_Gadcon *gc, const char *name, const char *id, const char *style)
 
    e_gadcon_client_util_menu_attach(gcc);
 
-   evas_object_event_callback_add (o, EVAS_CALLBACK_MOUSE_DOWN,
-                                   _button_cb_mouse_down, inst);
-
    return gcc;
 }
 
@@ -106,21 +103,6 @@ _gc_id_new (const E_Gadcon_Client_Class *client_class)
    return _gadcon_class.name;
 }
 
-static void
-_button_cb_mouse_down (void *data, Evas *e, Evas_Object *obj, void *event_info)
-{
-  //~ Evas_Event_Mouse_Down *ev;
-
-  //~ ev = event_info;
-  //~ if (ev->button == 1)
-    //~ {
-      //~ E_Zone *zone;
-
-      //~ zone = e_util_zone_current_get(e_manager_current_get());
-      //~ if (zone) e_desk_deskshow(zone);
-    //~ }
-}
-
 
 /* module setup */
 EAPI E_Module_Api e_modapi = {
@@ -153,18 +135,18 @@ e_modapi_init (E_Module * m)
 EAPI int
 e_modapi_shutdown (E_Module * m)
 {
-  Ecore_Exe *exe;
-  comp_module = NULL;
-  //~ e_gadcon_provider_unregister(&_gadcon_class);
-  
-  char cmd[200];
-  snprintf(cmd, sizeof(cmd), "%s", "killall picom");
-  exe = e_util_exe_safe_run(cmd, NULL);
-  return 1;
+   Ecore_Exe *exe;
+   comp_module = NULL;
+   //~ e_gadcon_provider_unregister(&_gadcon_class);
+
+   char cmd[200];
+   snprintf(cmd, sizeof(cmd), "%s", "killall picom");
+   exe = e_util_exe_safe_run(cmd, NULL);
+   return 1;
 }
 
 EAPI int
 e_modapi_save(E_Module * m)
 {
-  return 1;
+   return 1;
 }
