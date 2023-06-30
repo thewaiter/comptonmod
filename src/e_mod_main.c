@@ -30,7 +30,6 @@ struct _Instance
 static void _button_cb_mouse_down(void *data, Evas * e, Evas_Object * obj, void *event_info);
 
 static E_Module *comp_module = NULL;
-Eina_List *handlers;
 
 static E_Gadcon_Client *
 _gc_init(E_Gadcon *gc, const char *name, const char *id, const char *style)
@@ -71,11 +70,6 @@ _gc_shutdown(E_Gadcon_Client *gcc)
    Instance *inst;
 
    inst = gcc->data;
-   while (handlers) 
-     {
-        ecore_event_handler_del(handlers->data);
-        handlers = eina_list_remove_list(handlers, handlers);
-     }
 
    evas_object_del(inst->o_button);
    E_FREE(inst);
