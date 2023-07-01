@@ -5,22 +5,15 @@ MAINTAINERCLEANFILES = Makefile.in aclocal.m4 config.guess config.h.in \
 SUBDIRS = src \
 data
 
-EDJE_FLAGS = -v \
-	     -id $(top_srcdir)/data/images
-
 filesdir = $(datadir)
-files_DATA = module.desktop e-module-comptonmod.edj
+files_DATA = module.desktop
 
 EXTRA_DIST = module.desktop.in \
 	     e_modules-comptonmod.spec.in \
-	     e-module-comptonmod.edc \
 	     data/images/module_icon.png
 
-%.edj:  %.edc
-	$(EDJE_CC) $(EDJE_FLAGS) $< $@
-
 clean-local:
-	 rm -rf e-module-comptonmod.edj module.desktop e_modules-comptonmod.spec *~
+	 rm -rf module.desktop e_modules-comptonmod.spec *~
 
 uninstall:
 	rm -rf $(DESTDIR)$(datadir)
