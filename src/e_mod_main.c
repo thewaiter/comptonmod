@@ -28,11 +28,12 @@ e_modapi_init (E_Module * m)
       else
          snprintf(cmd, sizeof(cmd), "picom --config %s -b &", "picom --config /dev/null");
    exe = e_util_exe_safe_run(cmd, NULL);
+   if (exe) ecore_exe_free(exe);
    return comp_module;
 }
 
 EAPI int
-e_modapi_shutdown (E_Module * m)
+e_modapi_shutdown (E_Module * m __UNUSED__)
 {
    Ecore_Exe *exe;
    comp_module = NULL;
@@ -40,11 +41,12 @@ e_modapi_shutdown (E_Module * m)
    char cmd[200];
    snprintf(cmd, sizeof(cmd), "%s", "killall picom");
    exe = e_util_exe_safe_run(cmd, NULL);
+   if (exe) ecore_exe_free(exe);
    return 1;
 }
 
 EAPI int
-e_modapi_save(E_Module * m)
+e_modapi_save(E_Module * m  __UNUSED__)
 {
    return 1;
 }
