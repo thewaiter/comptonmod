@@ -43,7 +43,7 @@ Makefile
 src/Makefile
 data/Makefile
 data/etc/Makefile
-data/etc/compton.conf
+data/etc/picom.conf
 e_modules-comptonmod.spec
 module.desktop
 ])

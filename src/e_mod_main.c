@@ -18,13 +18,13 @@ e_modapi_init (E_Module * m)
       
    char cmd[PATH_MAX+20];
    char buf[PATH_MAX];
-   snprintf(buf, sizeof(buf), "%s/compton.conf",
+   snprintf(buf, sizeof(buf), "%s/picom.conf",
                  efreet_config_home_get());
    if (ecore_file_can_read(buf))
       snprintf(cmd, sizeof(cmd), "picom --config %s -b &", buf);
    else
-      if (ecore_file_can_read("/etc/compton.conf"))
-         snprintf(cmd, sizeof(cmd), "picom --config %s -b &", "/etc/compton.conf");
+      if (ecore_file_can_read("/etc/picom.conf"))
+         snprintf(cmd, sizeof(cmd), "picom --config %s -b &", "/etc/picom.conf");
       else
          snprintf(cmd, sizeof(cmd), "picom --config %s -b &", "picom --config /dev/null");
    exe = e_util_exe_safe_run(cmd, NULL);
