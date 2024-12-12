@@ -1,0 +1,2 @@
+subdir('etc')
+subdir('images')
