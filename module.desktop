@@ -2,6 +2,7 @@
 Type=Link
 Name=ComptonMod
 Name[be]=ComptonMod
+Name[es]=ComptonMod
 Name[it]=ComptonMod
 Name[pl]=ComptonMod
 Name[pt]=ComptonMod
@@ -12,6 +13,7 @@ Icon=e-module-comptonmod
 X-Enlightenment-ModuleType=look
 Comment=Module to run compton compositor.
 Comment[be]=Модуль для запуску кампазітнага менеджара Compton.
+Comment[es]=Módulo para ejecutar el compositor Compton.
 Comment[fr]=Module d'activation du compositeur Compton.
 Comment[it]=Modulo di attivazione del compositore Compton.
 Comment[pl]=Moduł aktywacji kompozytoru Compton.
