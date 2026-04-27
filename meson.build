@@ -38,6 +38,17 @@ subdir('data')
 #### write config file ####
 configure_file(output: 'config.h', configuration: config_h)
 
+cmd = [ edje_cc,
+        '-id', join_paths(meson.project_source_root(), 'data/images'),
+        '@INPUT@', '@OUTPUT@']
+custom_target('e-module-wincontrol.edj',
+              input      : 'e-module-comptonmod.edc',
+              output     : 'e-module-comptonmod.edj',
+              command    : cmd,
+              install_dir: mod_install_dir,
+              install    : true
+             )
+
 #### module.desktop ####
 install_data('module.desktop',
   install_dir : mod_install_dir
