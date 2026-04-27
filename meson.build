@@ -41,7 +41,7 @@ configure_file(output: 'config.h', configuration: config_h)
 cmd = [ edje_cc,
         '-id', join_paths(meson.project_source_root(), 'data/images'),
         '@INPUT@', '@OUTPUT@']
-custom_target('e-module-wincontrol.edj',
+custom_target('e-module-comptonmod.edj',
               input      : 'e-module-comptonmod.edc',
               output     : 'e-module-comptonmod.edj',
               command    : cmd,
